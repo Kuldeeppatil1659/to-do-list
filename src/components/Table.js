@@ -19,7 +19,8 @@ export const Table = ({ rows, deleteRow, editRow }) => {
                 <tbody>
                     {
                         rows.map((row,idx) => {
-                            const statusText = row.status.charAt(0).toUpperCase() + row.status.slice(1);
+                            const statusText = row.status ? row.status.charAt(0).toUpperCase() + row.status.slice(1) : "Completed";
+                            const priorityText = row.priority ? row.priority : 'Low';
                             return (
                                 <tr key={idx}> 
                                     <td>{row.assignedto}</td>
@@ -28,7 +29,7 @@ export const Table = ({ rows, deleteRow, editRow }) => {
                                     </td>
                                     <td>{row.duedate}</td>
                                     <td>
-                                        <span>{row.priority}</span>
+                                        <span>{priorityText}</span>
                                     </td>
                                     <td className='expand'>{row.comments}</td>
                                     

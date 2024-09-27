@@ -16,17 +16,17 @@ export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
         const errorFields = [];
         // Check if each form field is filled out
         if (!formState.assignedto) errorFields.push("Assigned To");
-        if (!formState.status) errorFields.push("Status");
-        if (!formState.duedate) errorFields.push("Due Date");
-        if (!formState.priority) errorFields.push("Priority");
-        if (!formState.comments) errorFields.push("Comments");
-
+        if (formState.status === "") errorFields.push("Status");
+        if (formState.duedate === "") errorFields.push("Due Date");
+        if (formState.priority === "") errorFields.push("Priority");
+        if (formState.comments === "") errorFields.push("Comments");
+    
         if (errorFields.length > 0) {
             setErrors(`Please fill in: ${errorFields.join(", ")}`);
             return false;
         }
-
-        setErrors(""); // Clear errors if validation passes
+    
+        setErrors(""); 
         return true;
     };
 
@@ -68,6 +68,7 @@ export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
                             onChange={handleChange}
                             required
                         >
+                            <option value="select">Please Select Status</option>
                             <option value="completed">Completed</option>
                             <option value="inprogress">In Progress</option>
                             <option value="notstarted">Not Started</option>
@@ -93,6 +94,7 @@ export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
                             onChange={handleChange}
                             required
                         >
+                            <option value="selectprivority">Please Select Privority</option>
                             <option value="Low">Low</option>
                             <option value="High">High</option>
                             <option value="Normal">Normal</option>
@@ -109,7 +111,7 @@ export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
                         />
                     </div>
 
-                    {errors && <div className='error'>{errors}</div>} {/* Show error message */}
+                    {errors && <div className='error'>{errors}</div>} 
 
                     <button type='submit' className='btn'>
                         Submit

@@ -4,7 +4,7 @@ import { Table } from './components/Table';
 import { Modal } from './components/Modal';
 import { FcTodoList } from "react-icons/fc";
 
-const API_URL = 'http://localhost:3000/pages'; // URL for JSON server
+const API_URL = 'https://my-json-server.typicode.com/Kuldeeppatil1659/api/pages'; 
 
 function App() {
     const [modalOpen, setModalOpen] = useState(false);
